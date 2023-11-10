@@ -122,24 +122,24 @@ Config.Radars = {
 }
 
 Config.CarItems = {
-    { name = 'heavyarmor',         amount = 2 },
-    { name = 'empty_evidence_bag', amount = 10 },
-    { name = 'police_stormram',    amount = 1 },
+    { name = 'heavyarmor',         amount = 2, departments = {'All'} },
+    { name = 'empty_evidence_bag', amount = 10, departments = {'All'} },
+    { name = 'police_stormram',    amount = 1, departments = {'All'} },
 }
 
-Config.AuthorizedVehicles = {
-    -- Grade 0 and higher
-    [0] = {
-        ['police'] = 'Police Car 1',
-        ['police2'] = 'Police Car 2',
-        ['police3'] = 'Police Car 3',
-        ['police4'] = 'Police Car 4',
-        ['policeb'] = 'Police Car 5',
-        ['policet'] = 'Police Car 6',
-        ['sheriff'] = 'Sheriff Car 1',
-        ['sheriff2'] = 'Sheriff Car 2',
-    },
-}
+-- Config.AuthorizedVehicles = {
+--     -- Grade 0 and higher
+--     [0] = {
+--         ['police'] = 'Police Car 1',
+--         ['police2'] = 'Police Car 2',
+--         ['police3'] = 'Police Car 3',
+--         ['police4'] = 'Police Car 4',
+--         ['policeb'] = 'Police Car 5',
+--         ['policet'] = 'Police Car 6',
+--         ['sheriff'] = 'Sheriff Car 1',
+--         ['sheriff2'] = 'Sheriff Car 2',
+--     },
+-- }
 
 Config.Items = {
     -- Grade 0 and higher
@@ -152,7 +152,8 @@ Config.Items = {
                 attachments = {
                     { component = 'COMPONENT_AT_PI_FLSH', label = 'Flashlight' },
                 }
-            }
+            },
+            departments = {'All'}
         },
         {
             name = 'weapon_stungun',
@@ -162,7 +163,8 @@ Config.Items = {
                 attachments = {
                     { component = 'COMPONENT_AT_AR_FLSH', label = 'Flashlight' },
                 }
-            }
+            },
+            departments = {'All'}
         },
         {
             name = 'weapon_pumpshotgun',
@@ -172,7 +174,8 @@ Config.Items = {
                 attachments = {
                     { component = 'COMPONENT_AT_AR_FLSH', label = 'Flashlight' },
                 }
-            }
+            },
+            departments = {'All'}
         },
         {
             name = 'weapon_smg',
@@ -183,7 +186,8 @@ Config.Items = {
                     { component = 'COMPONENT_AT_SCOPE_MACRO_02', label = '1x Scope' },
                     { component = 'COMPONENT_AT_AR_FLSH',        label = 'Flashlight' },
                 }
-            }
+            },
+            departments = {'All'}
         },
         {
             name = 'weapon_carbinerifle',
@@ -194,20 +198,21 @@ Config.Items = {
                     { component = 'COMPONENT_AT_AR_FLSH',      label = 'Flashlight' },
                     { component = 'COMPONENT_AT_SCOPE_MEDIUM', label = '3x Scope' },
                 }
-            }
+            },
+            departments = {'All'}
         },
-        { name = 'weapon_nightstick',  price = 0, amount = 50 },
-        { name = 'weapon_flashlight',  price = 0, amount = 50 },
-        { name = 'pistol_ammo',        price = 0, amount = 50 },
-        { name = 'smg_ammo',           price = 0, amount = 50 },
-        { name = 'shotgun_ammo',       price = 0, amount = 50 },
-        { name = 'rifle_ammo',         price = 0, amount = 50 },
-        { name = 'handcuffs',          price = 0, amount = 50 },
-        { name = 'empty_evidence_bag', price = 0, amount = 50 },
-        { name = 'police_stormram',    price = 0, amount = 50 },
-        { name = 'armor',              price = 0, amount = 50 },
-        { name = 'radio',              price = 0, amount = 50 },
-        { name = 'heavyarmor',         price = 0, amount = 50 },
+        { name = 'weapon_nightstick',  price = 0, amount = 50, departments = {'All'} },
+        { name = 'weapon_flashlight',  price = 0, amount = 50, departments = {'All'} },
+        { name = 'pistol_ammo',        price = 0, amount = 50, departments = {'All'} },
+        { name = 'smg_ammo',           price = 0, amount = 50, departments = {'All'} },
+        { name = 'shotgun_ammo',       price = 0, amount = 50, departments = {'All'} },
+        { name = 'handcuffs',          price = 0, amount = 50, departments = {'All'} },
+        { name = 'rifle_ammo',         price = 0, amount = 50, departments = {'All'} },
+        { name = 'empty_evidence_bag', price = 0, amount = 50, departments = {'All'} },
+        { name = 'police_stormram',    price = 0, amount = 50, departments = {'All'} },
+        { name = 'armor',              price = 0, amount = 50, departments = {'All'} },
+        { name = 'radio',              price = 0, amount = 50, departments = {'All'} },
+        { name = 'heavyarmor',         price = 0, amount = 50, departments = {'All'} },
     }
 }
 
@@ -247,5 +252,68 @@ Config.VehicleSettings = {
             ['13'] = true,
         },
         ['livery'] = 1,
+    }
+}
+
+Config.departments = {
+    [1] = {
+        name = 'Los Santos Police Department',
+        label = 'LSPD',
+        ranks = {
+            [1] = {
+                ['0'] = {
+                name = 'Recruit',
+                payment = 50
+            },
+			['1'] = {
+                name = 'Officer',
+                payment = 75
+            },
+			['2'] = {
+                name = 'Corporal',
+                payment = 100
+            },
+			['3'] = {
+                name = 'Sergeant',
+                payment = 125
+            },
+			['4'] = {
+                name = 'Lieutenant',
+                payment = 150
+            },
+            ['5'] = {
+                name = 'Captain',
+				isboss = true,
+                payment = 175
+            },
+            ['6'] = {
+                name = 'Major',
+				isboss = true,
+                payment = 200
+            },
+            ['7'] = {
+                name = 'Colonel',
+				isboss = true,
+                payment = 225
+            },
+            ['8'] = {
+                name = 'Commander',
+				isboss = true,
+                payment = 250
+            },
+            ['9'] = {
+                name = 'Chief',
+				isboss = true,
+                payment = 275
+            },
+            }
+        },
+        AuthorizedVehicles = {},
+    },
+    [2] = {
+        name = 'Los Santos Sheriff Department',
+        label = 'LSSD',
+        ranks = {},
+        AuthorizedVehicles = {},
     }
 }

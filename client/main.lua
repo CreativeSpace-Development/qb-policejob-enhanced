@@ -38,6 +38,15 @@ local function CreateDutyBlips(playerId, playerLabel, playerJob, playerLocation)
     end
 end
 
+local function createNPC(npcModel, lctn)
+    ped = GetHashKey(npcModel)
+	local created_ped = CreatePed(0, ped , lctn.x,lctn.y,lctn.z - 1, 0.0, true, true)
+	FreezeEntityPosition(created_ped, true)
+	SetEntityInvincible(created_ped, true)
+	SetBlockingOfNonTemporaryEvents(created_ped, true)
+	TaskStartScenarioInPlace(created_ped, "WORLD_HUMAN_COP_IDLES", 0, true)
+end
+
 -- Events
 
 AddEventHandler('onResourceStart', function(resourceName)
@@ -219,5 +228,18 @@ CreateThread(function()
         BeginTextCommandSetBlipName('STRING')
         AddTextComponentSubstringPlayerName(station.label)
         EndTextCommandSetBlipName(blip)
+    end
+end)
+
+-- Place peds at defined locations in the config
+CreateThread(function()
+    for _, p in pairs(Config.Locations['duty']) do
+        createNPC('s_m_y_cop_01', p)
+    end
+end)
+
+CreateThread(function()
+    for _, p in pairs(Config.Locations['vehicle']) do
+        createNPC('s_f_y_cop_01', p)
     end
 end)
